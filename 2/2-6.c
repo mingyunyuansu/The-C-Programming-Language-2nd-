@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //这题的关键是，所谓第p位，指111000，从最右边的0往左数起的第p位，然后再往左数n位，是我们的目标
+//setbits(13, 2, 2, 1) --> 11
 unsigned setbits(unsigned x, int p, int n, unsigned y);
 
 int main(int argc, char ** argv) {
