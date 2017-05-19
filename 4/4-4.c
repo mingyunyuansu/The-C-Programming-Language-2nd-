@@ -15,8 +15,10 @@ void ungetch(int);
 int getop(char *);
 void push(double);
 double pop(void);
-
-
+void print_top();
+double copy_top();
+void swap_top();
+void clear();
 
 int main() {
     int type;
@@ -109,4 +111,34 @@ void ungetch(int c) {
         printf("ungetch: too many characters\n");
     else
         buf[bufp++] = c;
+}
+
+void print_top() {
+    if (sp > 0)
+        printf("\t%.8g\n", val[sp - 1]);
+    else
+        printf("error: stack empty\n");
+}
+
+double copy_top() {
+    if (sp > 0)
+        return val[sp - 1];
+    else {
+        printf("error: empty stack\n");
+        return 0.0;
+    }
+}
+
+void swap_top() {
+    if (sp < 2) {
+        printf("not enough number in stack");
+        return;
+    }
+    double tmp = val[sp - 1];
+    val[sp - 1] = val[sp - 2];
+    val[sp - 2] = tmp;
+}
+
+void clear() {
+    sp = 0;
 }
